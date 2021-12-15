@@ -6,21 +6,21 @@ import (
 	mid "linx/Final_Project/Config"
 )
 
-func Limit(c *gin.Context)  {
-	linx := mid.Linx{}
+func SendAll(c *gin.Context)  {
+	linx:= mid.Linx{}
 	client,err := mid.GetClient()
 	if err != nil{
 		respError(c,err)
 		return
 	}
-	linx.AddressLinhao = c.PostForm("address")
-	address := common.HexToAddress(linx.AddressLinhao)
-	contract,err := mid.GetCallFaceTx(*client)
+
+	contract ,err:= mid.GetFacetTx(client)
 	if err != nil{
 		respError(c,err)
 		return
 	}
-	res,err :=mid.GetLimit(contract,address)
+	linx.AddressLinhao = c.PostForm("address")
+	res,err:=mid.SendALl(client,contract,common.HexToAddress(linx.AddressLinhao))
 	if err != nil{
 		respError(c,err)
 		return
@@ -28,3 +28,4 @@ func Limit(c *gin.Context)  {
 	respOK(c,res)
 	client.Close()
 }
+

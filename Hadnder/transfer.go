@@ -1,39 +1,56 @@
 package Hander
 
 import (
-	mid "linx/Final_Project/Config"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	mid "linx/Final_Project/Config"
 	"math/big"
 	"strconv"
 )
-
-// Tx 定义 交易结构体
-type Tx struct {
-	Address common.Address
-	Value *big.Int
-}
-
 // Transfer 路由中间件 Transfer
 func Transfer(c *gin.Context) {
-	client := mid.GetClient()
-	Address := common.HexToAddress(c.PostForm("ADDRESS"))
-	value,err:=strconv.ParseInt(c.PostForm("VALUE"), 10, 64)
-	if err!=nil{
+	linx :=mid.Linx{}
+	linx.AddressLinhao = c.PostForm("address")
+	client,err := mid.GetClient()
+	if err != nil{
+		respError(c,err)
+		return
+	}
+	linx.AmountLinhao,err = strconv.ParseInt(c.PostForm("amount"),10,64)
+	if err != nil{
+		respError(c,err)
+
+		return
+	}
+	Address := common.HexToAddress(linx.AddressLinhao)
+	if err != nil {
+		respError(c, err)
+
+		return
+	}
+
+	Value := big.NewInt(linx.AmountLinhao)
+
+	faucet, err := mid.GetFacetTx(client)
+	if err != nil {
 		respError(c, err)
 		return
 	}
-	Value := big.NewInt(value)
-	tx:= Tx{
-		Address:Address,
-		Value: Value,
+	res,err := mid.SendETH(client, faucet,Value ,Address)
+	if err !=nil{
+		respError(c,err)
+		return
 	}
-	faucet,err:=mid.GetFacetTx(client)
-	if err!=nil{
-		panic(err)
+	err = mid.InsertAdd(linx.AddressLinhao, c.ClientIP(), linx.AmountLinhao)
+	if err != nil {
+		respError(c,err)
+		return
 	}
-	 res :=mid.SendETH(client,faucet,&tx)
-	respOK(c,res)
-	 client.Close()
+	err = mid.InsertCon(linx.AmountLinhao)
+	if err != nil {
+		respError(c,err)
+		return
+	}
+	respOK(c, res)
+	client.Close()
 }

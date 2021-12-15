@@ -1,7 +1,7 @@
 // Code generated - DO NOT EDIT.
 // This file is a generated binding and any manual changes will be lost.
 
-package GO
+package Faucet
 
 import (
 	"errors"
@@ -30,7 +30,7 @@ var (
 
 // ApinameMetaData contains all meta data concerning the Apiname contract.
 var ApinameMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"}],\"name\":\"withdraw_ETH\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"Empty_Limit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"Get_Contract_Amount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"Limit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"addresspayable\",\"name\":\"NewOne\",\"type\":\"address\"}],\"name\":\"Transfer_Other\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"addresspayable\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"}],\"name\":\"withdraw_ETH\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"Charge\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"Empty_Limit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"Get_Contract_Amount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"Limit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"addresspayable\",\"name\":\"NewOne\",\"type\":\"address\"}],\"name\":\"Transfer_Other\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"addresspayable\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // ApinameABI is the input ABI used to generate the binding from.
@@ -239,6 +239,27 @@ func (_Apiname *ApinameSession) Limit(arg0 common.Address) (*big.Int, error) {
 // Solidity: function Limit(address ) view returns(uint256)
 func (_Apiname *ApinameCallerSession) Limit(arg0 common.Address) (*big.Int, error) {
 	return _Apiname.Contract.Limit(&_Apiname.CallOpts, arg0)
+}
+
+// Charge is a paid mutator transaction binding the contract method 0xead1aae4.
+//
+// Solidity: function Charge() payable returns()
+func (_Apiname *ApinameTransactor) Charge(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Apiname.contract.Transact(opts, "Charge")
+}
+
+// Charge is a paid mutator transaction binding the contract method 0xead1aae4.
+//
+// Solidity: function Charge() payable returns()
+func (_Apiname *ApinameSession) Charge() (*types.Transaction, error) {
+	return _Apiname.Contract.Charge(&_Apiname.TransactOpts)
+}
+
+// Charge is a paid mutator transaction binding the contract method 0xead1aae4.
+//
+// Solidity: function Charge() payable returns()
+func (_Apiname *ApinameTransactorSession) Charge() (*types.Transaction, error) {
+	return _Apiname.Contract.Charge(&_Apiname.TransactOpts)
 }
 
 // EmptyLimit is a paid mutator transaction binding the contract method 0xcfb4c43a.

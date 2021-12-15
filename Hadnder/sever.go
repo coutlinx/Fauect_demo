@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func start() error{
+func Start() error{
 	r := gin.Default()
 	//配置静态文件
 	r.Static("/", "Final_Project/Static")
@@ -13,8 +13,11 @@ func start() error{
 	linx := r.Group("linx")
 	{
 		linx.POST("/transfer",Transfer)
-		linx.POST("/CAmont",GetContractAmount)
-		linx.POST("/GetLimit",Limit)
+		linx.POST("/cAmount",GetContractAmount)
+		linx.POST("/getLimit",Limit)
+		linx.POST("/sendAll",SendAll)
+		linx.POST("/changer",Chager)
+		linx.POST("/freedLimit",FreeLimit)
 	}
 	err := r.Run()
 	return err
