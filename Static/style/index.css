@@ -1,176 +1,388 @@
-html, body, div, p, ul, li, img, h3 {
-  padding: 0;
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+html,
+body {
   margin: 0;
-}
-html {
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  height: 100%;
-}
-body, body > section {
-  height: 100%;
-}
-body > section > section {
-  padding-top: 1px;
-}
-main.el-main {
-  background: #f3f3f3;
-}
-.login {
+  padding: 0;
   box-sizing: border-box;
-  width: 60%;
-  margin: 8% auto;
+  font-family: "Quicksand", sans-serif;
+  font-size: 62.5%;
+  font-size: 10px;
 }
-.login h3 {
-  text-align: center;
-  margin-bottom: 10%;
-}
-.login div.el-col div {
-  background: #fff;
-  height: 120px;
-  max-width: 222px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 120px;
-  font-weight: 600;
-}
-.login div.el-col div:hover {
-  box-shadow: 8px 6px #e5e5e5;
-}
-.is-login {
-  box-sizing: border-box;   
-  margin: 30% auto 0;
-  background: #fff;
-  width: 550px;
-  height: 250px;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 40px;
-}
-.is-login div {
-  color: #333;
-  margin: 10px 0;
-}
-.is-login div span {
-  color: #999;
-}
-.header {
-  display: flex; 
-  align-items: center;
-}
-div.header h3 {
-  margin-left: 20px;
-  color: #fff;
-}
-div.header img {
-  width: 72px;
-}
-.aside, .header {
-  background: #3e3e3e;
-  color: #fff;
+/*-- Inspiration taken from abdo steif -->
+/* --> https://codepen.io/abdosteif/pen/bRoyMb?editors=1100*/
+
+/* Navbar section */
+
+.nav {
   width: 100%;
+  height: 65px;
+  position: fixed;
+  line-height: 65px;
+  text-align: center;
 }
-.header > span {
-  flex-grow: 1;
-  text-align: right;
+
+.nav div.logo {
+  float: left;
+  width: auto;
+  height: auto;
+  padding-left: 3rem;
 }
-button.button-logout {
+
+.nav div.logo a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+.nav div.logo a:hover {
+  color: #00E676;
+}
+
+.nav div.main_list {
+  height: 65px;
   float: right;
 }
-button.button-logout::after {
-  content: '';
-  display: block;
-  clear: right;
-}
-.tracedetail {
-  margin: 0 10%;
-}
-.trace-title {
-  color: #00b651;
-}
-.trace-timeline {
-  padding-left: 20%;
-}
-.fooddetail table {
-  border-spacing: 0;
-}
-.fooddetail .content {
-  padding-left: 20%;
-}
-.fooddetail .content > div {
-  height: 40px;
-}
-.consumer {
-  height: 100%;
-}
-.consumer > div:nth-child(1) {
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.consumer > div:nth-child(1) > div {
-  width: 80%;
-  border: 1px solid #ddd;
-  border-top: 6px solid #00b651;
-  padding: 5% 4%;
-}
-.consumer > div:nth-child(1) > div div.el-form-item {
-  padding: 5%;
-}
-.consumer > div:nth-child(2), .consumer > div:nth-child(1) > div {
-  background: #fff;
-}
-.consumer > div:nth-child(1) button.el-button {
-  background: #00b651;
-  width: 90%;
-  margin-left: 5%;
 
-}
-.consumer > div:nth-child(2) {
-  padding: 1% 2%;
-  height: 85vh;
-  overflow-y: scroll;
-  font-size: 14px;
-}
-.consumer div.bg-purple-light {
-  height: 100%;
-}
-.consumer div.consumer-tip{
+.nav div.main_list ul {
+  width: 100%;
+  height: 65px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-.el-timeline-item__content > div, .fooddetail .content > div {
-  display: flex;
-}
-.trace-content div > span, .trace-content div > span {
-  flex: 1 1 0;
-}
-.trace-content div > span:nth-child(2), .trace-content div > span:nth-child(2) {
-  text-align: center;
-}
-.el-timeline-item__tail {
-  border-left: 2px dashed #E4E7ED;
-}
-/* .el-timeline-no-node .el-timeline-item__node{
-  background: transparent;
-}
-.el-timeline-no-tail .el-timeline-item__tail{
-  border: none;
-} */
-.detail-dialog .el-dialog__header {
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
-.el-table {
-  margin-top: 20px;
-  background: #fff;
+
+.nav div.main_list ul li {
+  width: auto;
+  height: 65px;
+  padding: 0;
+  padding-right: 3rem;
 }
-.el-table td, .el-table th {
-  text-align: center;
+
+.nav div.main_list ul li a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 65px;
+  font-size: 2.4rem;
 }
-.el-input {
-  width: 20vw; 
-  margin-right: 20px;
+
+.nav div.main_list ul li a:hover {
+  color: #00E676;
+}
+
+
+/* Home section */
+
+/* .home {
+    width: 100%;
+    height: 164vh;
+    background-image: url(https://w.wallhaven.cc/full/4o/wallhaven-4ogjpm.jpg);
+    background-position: center top;
+	background-size:cover;
+} */
+
+.navTrigger {
+  display: none;
+}
+
+.nav {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+
+/* Media qurey section */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .navTrigger {
+    display: block;
+  }
+  .nav div.logo {
+    margin-left: 15px;
+  }
+  .nav div.main_list {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+  }
+  .nav div.show_list {
+    height: auto;
+    display: none;
+  }
+  .nav div.main_list ul {
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #111;
+    /*same background color of navbar*/
+    background-position: center top;
+  }
+  .nav div.main_list ul li {
+    width: 100%;
+    text-align: right;
+  }
+  .nav div.main_list ul li a {
+    text-align: center;
+    width: 100%;
+    font-size: 3rem;
+    padding: 20px;
+  }
+  .nav div.media_button {
+    display: block;
+  }
+}
+
+
+/* Animation */
+/* Inspiration taken from Dicson https://codemyui.com/simple-hamburger-menu-x-mark-animation/ */
+
+.navTrigger {
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  margin: auto;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  bottom: 0;
+}
+
+.navTrigger i {
+  background-color: #fff;
+  border-radius: 2px;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+}
+
+.navTrigger i:nth-child(1) {
+  -webkit-animation: outT 0.8s backwards;
+  animation: outT 0.8s backwards;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(2) {
+  margin: 5px 0;
+  -webkit-animation: outM 0.8s backwards;
+  animation: outM 0.8s backwards;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(3) {
+  -webkit-animation: outBtm 0.8s backwards;
+  animation: outBtm 0.8s backwards;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+}
+
+.navTrigger.active i:nth-child(1) {
+  -webkit-animation: inT 0.8s forwards;
+  animation: inT 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(2) {
+  -webkit-animation: inM 0.8s forwards;
+  animation: inM 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(3) {
+  -webkit-animation: inBtm 0.8s forwards;
+  animation: inBtm 0.8s forwards;
+}
+
+@-webkit-keyframes inM {
+  50% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+  }
+}
+
+@keyframes inM {
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes outM {
+  50% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+  }
+}
+
+@keyframes outM {
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes inT {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translateY(9px) rotate(135deg);
+  }
+}
+
+@keyframes inT {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(9px) rotate(135deg);
+  }
+}
+
+@-webkit-keyframes outT {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translateY(9px) rotate(135deg);
+  }
+}
+
+@keyframes outT {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(9px) rotate(135deg);
+  }
+}
+
+@-webkit-keyframes inBtm {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translateY(-9px) rotate(135deg);
+  }
+}
+
+@keyframes inBtm {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-9px) rotate(135deg);
+  }
+}
+
+@-webkit-keyframes outBtm {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translateY(-9px) rotate(135deg);
+  }
+}
+
+@keyframes outBtm {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-9px) rotate(135deg);
+  }
+}
+
+.affix {
+  padding: 0;
+  background-color: #111;
+}
+
+
+
+
+
+
+.myH2 {
+  text-align:center;
+  font-size: 4rem;
+}
+.myP {
+  text-align: justify;
+  padding-left:15%;
+  padding-right:15%;
+  font-size: 20px;
+}
+@media all and (max-width:700px){
+  .myP {
+    padding:2%;
+  }
+}
+
+#eth{
+  position:absolute;
+  top: 30vh;
+  left: 35vh;
+}
+
+
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(../images/preview.jpg) no-repeat;
+  background-size: cover;
 }

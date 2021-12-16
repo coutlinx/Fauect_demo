@@ -30,10 +30,26 @@ $('#Send').click(() => {
           dataType:"json",
           data:{address:Address,amount:value},
           success:function (data) {
-              console.log(data)
+              if (data.code == 1){
+              console.log(data.message)
+                  if (data.message.code == -32000){
+                      $("#exampleModalLongTitle").html("出了点问题")
+                      $(".modal-body").html(`<h1 class="text-danger  text-center">每个账户每天只能领取3ETH哦</h1>`)
+                      $("#exampleModalLong").modal("show")
+                      return
+                  }else if(data.message.code == undefined){
+                      $("#exampleModalLongTitle").html("出了点问题")
+                      $(".modal-body").html(`<h1 class="text-danger  text-center">${data.message}</h1>`)
+                      $("#exampleModalLong").modal("show")
+                      return
+                  }
+              }else {
+                  console.log(data)
+              }
           },
           error:function (data){
               console.log(data)
+              $(".alert").alert()
           }
       })
     console.log($('#value').val(), Address)
@@ -49,11 +65,18 @@ $('#balance').click(()=>{
       dataType:"json",
       success:function (data){
         console.log(data)
+          if (data.code ==1){
+              if (data.message.URL != undefined)
+              $("#exampleModalLongTitle").html("出了点问题")
+              $(".modal-body").html(`<h1 class="text-danger  text-center">私有链没有链接上</h1>`)
+              $("#exampleModalLong").modal("show")
+              return
+          }
         $("#exampleModalLongTitle").html("合约余额")
         $(".modal-body").html(`<div class="jumbotron">
                       <h1 class="display-3">合约余额:</h1>
                       <hr class="my-5">
-                      <p>${data.data}</p>
+                      <p class="text-info  text-center" style="font-size: 32px">${data.data/10**18}  ETH</p>
                       <br/>
                       <p class="lead">
                         <a class="btn btn-primary btn-lg" href="https://github.com/coutlinx/Fauect_demo" role="button">查看合约代码</a>
@@ -63,6 +86,7 @@ $('#balance').click(()=>{
       },
       error:function (data){
         console.log(data)
+
       }
   })
 
@@ -96,11 +120,19 @@ function  Query(){
         dataType:"json",
         data:{address:address},
         success:function (data) {
-            console.log(data.data)
+            console.log(data)
+            if (data.code ==1){
+                if (data.message.URL != undefined)
+                    $("#exampleModalLongTitle").html("出了点问题")
+                $(".modal-body").html(`<h1 class="text-danger  text-center">私有链没有链接上</h1>`)
+                $("#exampleModalLong").modal("show")
+                return
+            }
             $("#VALUE").html(data.data)
         },
         error:function (data){
             console.log(data)
+            $(".alert").alert()
         }
     })
 }

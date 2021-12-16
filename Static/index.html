@@ -1,27 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>待办</title>
-  <!-- 引入样式 -->
-  <link rel="shortcut icon" href="./images/favicon.ico">
-  <link rel="stylesheet" href="./lib/element.css">
-  <link rel="stylesheet" href="./style/index.css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/index.css">
+  <title>Hello, world!</title>
 </head>
 
 <body>
-  <div id="app"></div>
-  <!-- 引入组件库 -->
-  <script type="text/javascript" src="./lib/vue.min.js"></script>
-  <script type="text/javascript" src="./lib/element.js"></script>
-  <script type="text/javascript" src="./lib/axios.min.js"></script>
+<nav class="nav">
+  <div class="container">
+    <div class="logo">
+      <a href="https://github.com/coutlinx/Fauect_demo">LINX的Faucet项目</a>
+    </div>
+    <div id="mainListDiv" class="main_list">
+      <ul class="navlinks">
+        <li><a id="balance" href="#" onclick="return false">余额</a></li>
+        <li><a href="#" id="query" onclick="return false">查询</a></li>
+        <li><a  data-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample">
+          规则
+        </a></li>
 
-  <!-- 引入 vue 实例及子组件 -->
-  <script src="./src/pages/components.js"></script>
-  <script src="./src/pages/login.js"></script>
-  <script src="./src/index.js"></script>
+        <li></li>
+      </ul>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body" style="font-size: 24px; background-color:rgba(255, 255, 255, 0.5);">
+        1:每个地址每天最多得3ETH
+        <br>
+        2:每个地址5秒才能在请求一次
+      </div>
+    </div>
+    <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+  </div>
+
+</nav>
+
+<section class="home">
+  <div id="Title">
+
+  </div>
+  <div id="eth">
+    <div class="input-group">
+      <input id="value" style="display: none;" />
+      <input type="text" id="Address" class="form-control input-lg"
+             style=" font-size:22px;width: 750px; height: 50px; BACKGROUND-COLOR: transparent; color: white">
+      <div class="input-group-append">
+        <button class="btn btn-outline-info dropdown-toggle" id="Btn" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"
+                style="width: 160px; font-size:22px;">确认ETH数目</button>
+        <div class="dropdown-menu" style="width: 160px; font-size: 16px;">
+          <a class="dropdown-item" onclick="Value(this)">1 ETH</a>
+          <br>
+          <a class="dropdown-item" onclick="Value(this)">2 ETH</a>
+          <br>
+          <a class="dropdown-item" onclick="Value(this)">3 ETH</a>
+        </div>
+        <button type="button" class="btn btn-outline-danger" style="width: 160px; font-size:22px;"
+                id="Send">确认</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true" style="font-size: 24px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<video playsinline autoplay muted loop poster="images/preview.jpg" id="bgvid">
+  <source src="video/EP19_steam_2.mp4" type="video/mp4">
+</video>
+<!-- <div style="height: 1000px">
+        <h2 class="myH2">What is this ?</h2>
+        <p class="myP">This is a responsive fixed navbar animated on scroll</p>
+        <p class="myP">I took inspiration from  ABDO STEIF (<a href="https://codepen.io/abdosteif/pen/bRoyMb?editors=1100">https://codepen.io/abdosteif/pen/bRoyMb?editors=1100</a>)
+        and Dicson <a href="https://codepen.io/dicson/pen/waKPgQ">(https://codepen.io/dicson/pen/waKPgQ)</a></p>
+        <p class="myP">I HOPE YOU FIND THIS USEFULL</p>
+        <p class="myP">Albi</p>
+            <p class="myP">
+
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+        </p>
+</div> -->
+
+<!-- Jquery needed -->
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+<script>
+  $(window).scroll(function () {
+    if ($(document).scrollTop() > 50) {
+      $('.nav').addClass('affix');
+      console.log("OK");
+    } else {
+      $('.nav').removeClass('affix');
+    }
+  });
+</script>
 </body>
 
 </html>

@@ -3,6 +3,7 @@ package Config
 import (
 	"database/sql"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common"
 	_ "github.com/go-sql-driver/mysql"
 	"time"
 )
@@ -40,4 +41,22 @@ func InsertCon(amount int64) error {
 		return err
 	}
 	return nil
+}
+
+func SelectAllAddress() ([]common.Address, error) {
+	var Address []common.Address
+	var sqlStr = "select address from transfer  where time >= date(now()) and time < DATE_ADD(date(now()),INTERVAL 1 DAY) group by address"
+	row, err := db.Query(sqlStr)
+	if err != nil {
+		return nil, err
+	}
+	for row.Next() {
+		var acc common.Address
+		err = row.Scan(acc)
+		if err != nil {
+			return nil, err
+		}
+		Address = append(Address, acc)
+	}
+	return Address, nil
 }
