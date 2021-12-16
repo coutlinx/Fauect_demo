@@ -6,11 +6,18 @@ import (
 	mid "linx/Final_Project/Config"
 	"math/big"
 	"strconv"
+	"time"
 )
+var AT = make(map[string]int)
 // Transfer 路由中间件 Transfer
 func Transfer(c *gin.Context) {
 	linx :=mid.Linx{}
 	linx.AddressLinhao = c.PostForm("address")
+	if AT[linx.AddressLinhao] - time.Now().Second() <5 && AT[linx.AddressLinhao] - time.Now().Second() >-5 && AT[linx.AddressLinhao] != 0 {
+		respError(c,"请过几秒在试下吧")
+		return
+	}
+	AT[linx.AddressLinhao] = time.Now().Second()
 	client,err := mid.GetClient()
 	if err != nil{
 		respError(c,err)
