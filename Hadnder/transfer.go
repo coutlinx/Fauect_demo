@@ -1,31 +1,33 @@
 package Hander
 
 import (
+	mid "Final_Project/Config"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
-	mid "linx/Final_Project/Config"
 	"math/big"
 	"strconv"
 	"time"
 )
+
 var AT = make(map[string]int)
+
 // Transfer 路由中间件 Transfer
 func Transfer(c *gin.Context) {
-	linx :=mid.Linx{}
+	linx := mid.Linx{}
 	linx.AddressLinhao = c.PostForm("address")
-	if AT[linx.AddressLinhao] - time.Now().Second() <5 && AT[linx.AddressLinhao] - time.Now().Second() >-5 && AT[linx.AddressLinhao] != 0 {
-		respError(c,"请过几秒在试下吧")
+	if AT[linx.AddressLinhao]-time.Now().Second() < 5 && AT[linx.AddressLinhao]-time.Now().Second() > -5 && AT[linx.AddressLinhao] != 0 {
+		respError(c, "请过几秒在试下吧")
 		return
 	}
 	AT[linx.AddressLinhao] = time.Now().Second()
-	client,err := mid.GetClient()
-	if err != nil{
-		respError(c,err)
+	client, err := mid.GetClient()
+	if err != nil {
+		respError(c, err)
 		return
 	}
-	linx.AmountLinhao,err = strconv.ParseInt(c.PostForm("amount"),10,64)
-	if err != nil{
-		respError(c,err)
+	linx.AmountLinhao, err = strconv.ParseInt(c.PostForm("amount"), 10, 64)
+	if err != nil {
+		respError(c, err)
 
 		return
 	}
@@ -43,19 +45,19 @@ func Transfer(c *gin.Context) {
 		respError(c, err)
 		return
 	}
-	res,err := mid.SendETH(client, faucet,Value ,Address)
-	if err !=nil{
-		respError(c,err)
+	res, err := mid.SendETH(client, faucet, Value, Address)
+	if err != nil {
+		respError(c, err)
 		return
 	}
 	err = mid.InsertAdd(linx.AddressLinhao, c.ClientIP(), linx.AmountLinhao)
 	if err != nil {
-		respError(c,err)
+		respError(c, err)
 		return
 	}
 	err = mid.InsertCon(linx.AmountLinhao)
 	if err != nil {
-		respError(c,err)
+		respError(c, err)
 		return
 	}
 	respOK(c, res)

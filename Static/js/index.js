@@ -10,7 +10,7 @@ function Value(e) {
   $('#value').val(value)
   but = $('#Btn')
     $('#Btn').addClass("btn-info").removeClass("btn-outline-info")
-
+    but.text()
   but.text(e.innerHTML)
   // `<button type="button" class="btn btn-lg btn-primary dropdown-toggle" disabled>${e.innerHTML}</button>`
 }

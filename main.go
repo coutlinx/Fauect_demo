@@ -1,10 +1,10 @@
 package main
 
 import (
+	C "Final_Project/Config"
+	S "Final_Project/Hadnder"
 	"fmt"
 	"github.com/robfig/cron"
-	C "linx/Final_Project/Config"
-	S "linx/Final_Project/Hadnder"
 	"time"
 )
 

@@ -1,6 +1,7 @@
 package Config
 
 import (
+	Faucet "Final_Project/Faucet/GO"
 	"context"
 	"crypto/ecdsa"
 	"fmt"
@@ -10,14 +11,13 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
-	Faucet "linx/Final_Project/Faucet/GO"
 	"math/big"
 )
 
 const (
 	chainID       = 102400
 	gasLimit      = uint64(21000)
-	FaucetAddress = "0xC0aFcf1bD2c46b38C16073547d99f99D9675b2A2"
+	FaucetAddress = "0x25cC555dC2600b609DC6cA27C3b4E25C38d4C13A"
 )
 
 // GetClient 获取 ethclient.Client 对象

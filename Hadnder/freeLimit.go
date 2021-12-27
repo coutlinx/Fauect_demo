@@ -1,16 +1,16 @@
 package Hander
 
 import (
+	mid "Final_Project/Config"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
-	mid "linx/Final_Project/Config"
 )
 
-func FreeLimit(c *gin.Context)  {
-	linx :=mid.Linx{}
-	client,err := mid.GetClient()
-	if err != nil{
-		respError(c,err)
+func FreeLimit(c *gin.Context) {
+	linx := mid.Linx{}
+	client, err := mid.GetClient()
+	if err != nil {
+		respError(c, err)
 		return
 	}
 	linx.AddressLinhao = c.PostForm("address")
@@ -26,11 +26,11 @@ func FreeLimit(c *gin.Context)  {
 		return
 	}
 
-	res, err := mid.FreedLimit(client,faucet,Address)
+	res, err := mid.FreedLimit(client, faucet, Address)
 	if err != nil {
-		respError(c,err)
+		respError(c, err)
 		return
 	}
-	respOK(c,res)
+	respOK(c, res)
 	client.Close()
 }

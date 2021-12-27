@@ -1,11 +1,14 @@
 package Hander
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func Start() error {
 	r := gin.Default()
+	r.Use(cors.Default())
+
 	//配置静态文件
 	r.Static("/", "Final_Project/Static")
 
